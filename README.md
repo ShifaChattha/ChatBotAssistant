@@ -11,7 +11,7 @@ NARS-Chatbot/
 ├── templates/         # HTML templates for the web interface
 ├── static/            # CSS, JS, images
 ├── README.md          # Project overview and instructions
-└── .gitignore         # Ignored files
+
 ````
 
 ##  Features
@@ -28,7 +28,7 @@ NARS-Chatbot/
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/NARS-Chatbot.git
+git clone https://github.com/ShifaChattha/ChatBotAssistant.git
 cd NARS-Chatbot
 ````
 2. **Create a virtual environment (optional but recommended):**
