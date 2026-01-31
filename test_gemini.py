@@ -1,6 +1,8 @@
 # import google.generativeai as genai
 
+
 # # Configure Gemini API key
+# #  Gemini API key is hidden for security purposes
 
 
 # # Choose a model
