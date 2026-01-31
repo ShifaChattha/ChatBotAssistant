@@ -1,0 +1,178 @@
+api key get link 
+https://aistudio.google.com/apikey
+api key =AIzaSyBP4VDfB3IITrTZxLQV5W2Yc2-QnksEwbc
+model i use in project =models/gemini-2.5-flash-preview-05-20"
+
+
+Set-ExecutionPolicy -Scope Process 
+-ExecutionPolicy Bypass
+& .\venv\Scripts\Activate.ps1
+python app.py
+CREATE DATABASE NarsChatbot;
+
+
+-- Create database
+CREATE DATABASE IF NOT EXISTS NarsChatbot;
+USE NarsChatbot;
+
+-- Products table
+CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(50),
+    name VARCHAR(100),
+    price VARCHAR(10)
+);
+
+-- Shades table
+CREATE TABLE IF NOT EXISTS shades (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    shade_name VARCHAR(50),
+    stock INT,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
+
+
+
+
+-- Insert Lipsticks
+INSERT INTO products (category, name, price) VALUES
+('lipsticks', 'NARS Satin Lipstick', '$29'),
+('lipsticks', 'NARS Velvet Lip Glide', '$28'),
+('lipsticks', 'NARS Audacious Lipstick', '$30');
+
+-- Insert Lipstick Shades
+INSERT INTO shades (product_id, shade_name, stock) VALUES
+(1, 'Dolce Vita', 12),
+(1, 'Rose', 5),
+(1, 'Beige', 8),
+(1, 'Coral', 10),
+(2, 'Bound', 15),
+(2, 'Devotion', 7),
+(2, 'Haze', 4),
+(3, 'Rita', 10),
+(3, 'Barbara', 6),
+(3, 'Anita', 8);
+
+-- Insert Blushes
+INSERT INTO products (category, name, price) VALUES
+('blushes', 'NARS Orgasm Blush', '$39'),
+('blushes', 'NARS Exhibit A Blush', '$38'),
+('blushes', 'NARS Deep Throat Blush', '$40');
+
+-- Insert Blush Shades
+INSERT INTO shades (product_id, shade_name, stock) VALUES
+(4, 'Orgasm', 20),
+(4, 'Deep Throat', 12),
+(4, 'Exhibit A', 8),
+(5, 'Exhibit A', 10),
+(5, 'Dolce Vita', 5),
+(5, 'Rose', 7),
+(6, 'Deep Throat', 8),
+(6, 'Orgasm', 12),
+(6, 'Exhibit A', 5);
+
+-- Insert Concealers
+INSERT INTO products (category, name, price) VALUES
+('concealers', 'NARS Radiant Creamy Concealer', '$32'),
+('concealers', 'NARS Soft Matte Complete Concealer', '$33'),
+('concealers', 'NARS Radiant Stick Concealer', '$34');
+
+-- Insert Concealer Shades
+INSERT INTO shades (product_id, shade_name, stock) VALUES
+(7, 'Vanilla', 10),
+(7, 'Custard', 7),
+(7, 'Ginger', 5),
+(8, 'Light 1', 8),
+(8, 'Light 2', 6),
+(8, 'Medium 1', 5),
+(9, 'Light', 6),
+(9, 'Medium', 5),
+(9, 'Dark', 3);
+
+-- Insert Eyeliners
+INSERT INTO products (category, name, price) VALUES
+('eyeliners', 'NARS High-Pigment Long-Wear Eyeliner', '$25'),
+('eyeliners', 'NARS Larger Than Life Long-Wear Eyeliner', '$26'),
+('eyeliners', 'NARS Velvet Eyeliner', '$27');
+
+-- Insert Eyeliner Shades
+INSERT INTO shades (product_id, shade_name, stock) VALUES
+(10, 'Black', 14),
+(10, 'Brown', 6),
+(10, 'Emerald', 5),
+(11, 'Graphite', 10),
+(11, 'Dark Brown', 8),
+(11, 'Midnight Blue', 5),
+(12, 'Black', 12),
+(12, 'Plum', 6),
+(12, 'Sapphire', 4);
+
+-- Insert Foundations
+INSERT INTO products (category, name, price) VALUES
+('foundations', 'NARS Natural Radiant Longwear Foundation', '$49'),
+('foundations', 'NARS Sheer Glow Foundation', '$48'),
+('foundations', 'NARS Velvet Foundation', '$50');
+
+-- Insert Foundation Shades
+INSERT INTO shades (product_id, shade_name, stock) VALUES
+(13, 'Mont Blanc', 8),
+(13, 'Punjab', 12),
+(13, 'Fiji', 7),
+(14, 'Light 1', 9),
+(14, 'Light 2', 7),
+(14, 'Medium 1', 6),
+(15, 'Medium 2', 5),
+(15, 'Tan 1', 4),
+(15, 'Tan 2', 3);
+
+
+
+
+questions 
+Do you have Orgasm Blush?
+ Do you have a red lipstick under PKR 3000
+Can you recommend a lipstick for a wedding look?
+What’s your return policy?
+ Suggest a natural everyday makeup kit.
+ What’s the best primer for dry skin?
+How do I track my order?
+Can I pay cash on delivery?
+Tell me a joke.
+What’s the weather today?
+Who’s your favorite celebrity?
+do you how to cook biryani?
+What foundations are available for oily skin?
+how i online shooping here in website
+how i cancel my order
+I am doing online shopping for the first time I don't know how to do this
+what the prices of mobiles
+I am doing online shopping for the first time
+how i shopping here online
+
+
+
+How to do payment for shopping
+Do you accept cash on delivery
+what are your top products
+In how many time I will get the product in my home
+give me beauty tips
+how i cancel my order
+how i place order
+how i adjust my order
+
+show me low cost lipsticks
+i am poor i want to purchase makeup help me show me low cost products that i buy
+
+
+Do you offer free shipping?
+How much does shipping cost?
+Do you ship internationally?
+Can you ship outside Pakistan?
+Do you deliver to rural areas?
+My order hasn’t arrived, what should I do?
+Tell some products that are brand new on website
+show me new lipsticks
+my frnd birthady i wnat to give gift tell me what i give her recommend me some products

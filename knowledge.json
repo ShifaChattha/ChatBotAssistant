@@ -1,0 +1,94 @@
+{
+  "beauty_tips": {
+    "keywords": [
+      "beauty tips", "makeup tips", "skin care tips", "skincare advice",
+      "how to take care of skin", "makeup advice", "tips for skin",
+      "beauty guidance", "skin routine", "face care", "makeup routine"
+    ],
+    "response": "Here are some simple beauty tips: \n- Always clean and moisturize your face.\n- Choose makeup that matches your skin tone.\n- Remove makeup before sleeping.\n- Drink water and take care of your skin daily."
+
+  },
+  "cancel_order": {
+    "keywords": [
+      "cancel order", "how to cancel order", "order cancel", "stop order",
+      "void order", "terminate order", "i want to cancel my order",
+      "remove order", "delete order"
+    ],
+    "response": "To cancel an order, visit your Order page and click 'Cancel'. You can also contact support."
+  },
+  "modify_order": {
+    "keywords": [
+      "modify order", "change order", "edit order", "update order",
+      "correct order", "adjust order", "i want to change my order",
+      "amend order", "revise order"
+    ],
+    "response": "You can modify an order within 24 hours of placing it through your account dashboard."
+  },
+  "track_order": {
+    "keywords": [
+      "track order", "order status", "where is my order", "track my order",
+      "order tracking", "shipment status", "order delivery status"
+    ],
+    "response": "You can track your order by visiting your Track Orders page and clicking on 'Track Order'."
+  },
+  "add_to_cart": {
+    "keywords": [
+      "add to cart", "put in cart", "shopping cart", "add product",
+      "add item to cart", "put item in cart", "how to add to cart",
+      "include in cart", "insert in cart"
+    ],
+    "response": "To add a product to your cart, click 'Add to Cart' on my website pages Makeup,Trending Sale,New,Last Chance . "
+  },
+  "shipping_info": {
+   "keywords": [
+    "shipping info", "shipping details", "delivery time", "shipping time",
+    "how long to deliver", "delivery info", "shipping method",
+    "shipping process", "track delivery", "shipping", "delivery charges",
+    "shipping cost", "delivery fees"
+   ],
+  "response": "We ship worldwide. Standard shipping takes 5–7 business days. Orders usually arrive within 3–5 working days in major cities and 5–7 days in other areas. Delivery charges are calculated at checkout based on your location and order size."
+  },
+
+  "place_order": {
+    "keywords": [
+      "place order", "how to order", "buy products", "make order",
+      "purchase products", "how do I order", "ordering steps",
+      "checkout process", "complete order", "shopping steps",
+      "how to shop online", "how to buy online", "online purchase steps",
+      "steps to order"
+    ],
+    "response": "Select products, add to cart, proceed to checkout, and make the payment."
+  },
+  "trending_products": {
+    "keywords": [
+      "trending products", "popular products", "hot products",
+      "best sellers", "top products", "what's trending",
+      "popular items", "latest products","hot selling products"
+    ],
+    "response": "Check out our trending products this month on the Trending Sale page!"
+  },
+  "payment_methods": {
+    "keywords": [
+      "payment methods", "how to pay", "checkout payment", "payment options",
+      "accepted payments", "payment ways", "how can I pay",
+      "payment process", "payment types"
+    ],
+    "response": "We accept Visa, MasterCard, PayPal, and Apple Pay."
+  },
+  "return_policy": {
+    "keywords": [
+      "return policy", "return product", "how to return", "product return",
+      "refund", "exchange", "how can I return",
+      "return rules", "return procedure"
+    ],
+    "response": "Returns are accepted within 30 days of purchase. Product must be unused and in original packaging."
+  },
+  "new_products": {
+    "keywords": [
+      "new products", "latest arrivals", "just launched", "fresh arrivals",
+      "recent products", "what's new", "new collection", "new arrivals",
+      "new nars products","new"
+    ],
+    "response": "Our latest launch: Afterglow Lip Oil 💄✨. For more new arrivals, please visit our 'New' page on the website."
+  }
+}

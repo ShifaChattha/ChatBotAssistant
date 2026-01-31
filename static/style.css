@@ -1,0 +1,152 @@
+body {
+    
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('narsbackgroud.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    /* justify-content: center; */
+}
+
+/* Chat container styling */
+#chat-container h2{
+  font-family: Arial, Helvetica, sans-serif;
+  
+    text-shadow: 0 0 40px #D0A54A, 0 0 40px #D0A54A; /* glowing shadow */
+    animation: pulseGloww 2s infinite;
+
+}
+#chat-container {
+  font-family: Arial, Helvetica, sans-serif;
+
+    width: 90%; /* leave 10% margin left and right */
+    max-width: 600px;
+    padding: 20px;
+    margin-left: 2%;
+    margin-top: 1%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* color: rgb(239, 205, 119); */
+    color: #D0A54A;
+    text-align: center;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.85); /* semi-transparent black */
+
+    
+
+}
+
+/* Chatbox area */
+#chatbox {
+    height: 250px;
+    overflow-y: auto;
+    /* border: 1px solid rgb(239, 205, 119); */
+        border: 1px solid #D0A54A;
+
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #000; /* pure black background inside chatbox */
+    border-radius: 10px;
+}
+
+/* Input and button styling */
+input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid #D0A54A;
+    background-color: #111;
+    color:#D0A54A;
+}
+
+input::placeholder {
+
+    color: #D0A54A;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #D0A54A;
+    background-color: #111;
+    color: #D0A54A;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:#D0A54A;
+    color: black;
+}
+
+/* Messages styling */
+p {
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.user-message {
+    text-align: left;
+    border: dotted #D0A54A;
+    background-color: #111;
+    color: #D0A54A;
+    margin-left: auto;   /* push it to right */
+    margin-right: 5px;
+    max-width: 50%;      /* expand user bubble up to 70% */
+    display: block;
+}
+
+.bot-message {
+    text-align: left;
+    background-color: #111;
+    border: dotted #D0A54A;
+    color:#D0A54A;
+    margin-right: auto;  /* push it to left */
+    margin-left: 5px;
+    max-width: 70%;      /* bot bubble also max 70% */
+    display: block;
+}
+
+
+
+
+
+/* Right side help message */
+/* #help-message {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+} */
+#help-message{
+
+margin-left: 3%;
+}
+#help-message h1 {
+    font-size: 30px;
+    color:#D0A54A; /* black text */
+    /* background-color: #D0A54A; gold background */
+    background-color: rgba(0, 0, 0, 0.505);
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #D0A54A, 0 0 40px #D0A54A; /* glowing shadow */
+    animation: pulseGlow 2s infinite;
+}
+
+/* Infinite glowing animation */
+@keyframes pulseGlow {
+    0%   { box-shadow: 0 0 10px #D0A54A, 0 0 20px #D0A54A; }
+    50%  { box-shadow: 0 0 30px #FFD700, 0 0 60px #FFD700; }
+    100% { box-shadow: 0 0 10px #D0A54A, 0 0 20px #D0A54A; }
+}
+@keyframes pulseGloww {
+    0%   { text-shadow: 0 0 10px #D0A54A, 0 0 20px #D0A54A; }
+    50%  { text-shadow: 0 0 30px #FFD700, 0 0 60px #FFD700; }
+    100% { text-shadow: 0 0 10px #D0A54A, 0 0 20px #D0A54A; }
+}

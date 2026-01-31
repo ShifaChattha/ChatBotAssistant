@@ -1,0 +1,142 @@
+from flask import Flask, request, jsonify, render_template
+import mysql.connector
+import json
+import google.generativeai as genai
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+# Configure Gemini API
+#It connects my app to Google’s AI using the API key.
+genai.configure(api_key="AIzaSyBP4VDfB3IITrTZxLQV5W2Yc2-QnksEwbc") 
+# --- MySQL Connection ---
+db_config = {
+    "host": "localhost",
+    "user": "root",
+    "password": "pugc1234",
+    "database": "NarsChatbot"
+}
+
+# --- Fetch all products with shades & stock from DB ---
+def get_products_from_db():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM products")
+    products = cursor.fetchall()
+
+    products_data = {}
+    for product in products:
+        category = product['category']
+        product_id = product['id']
+
+        cursor.execute("SELECT shade_name, stock FROM shades WHERE product_id=%s", (product_id,))
+        shades_list = cursor.fetchall()
+        shades = [s['shade_name'] for s in shades_list]
+        stock = {s['shade_name']: s['stock'] for s in shades_list}
+
+        if category not in products_data:
+            products_data[category] = []
+
+        products_data[category].append({
+            "name": product['name'],
+            "price": product['price'],
+            "shades": shades,
+            "stock": stock
+        })
+
+    cursor.close()
+    conn.close()
+    return products_data
+
+# --- Load JSON knowledge ---
+with open("knowledge.json", "r") as f:
+    knowledge_base = json.load(f)
+
+
+# --- Simple greetings ---
+greetings = ["hello", "hey", "aoa", "asalamu-alikum"] #list that can be changeable
+greetings_reply = "Hello! 🌸 I am your NARS Assistant. How can I help you with NARS products, beauty tips, or orders?"
+
+# --- Detect relevant knowledge ---
+def get_relevant_knowledge(user_message):
+    user_message_lower = user_message.lower()
+
+    # 1️⃣ Check JSON knowledge first
+    for key, content in knowledge_base.items():
+        for kw in content.get("keywords", []):
+            if kw.lower() in user_message_lower:
+                return {key: content}
+
+    # 2️⃣ Then check product keywords (DB)
+    product_keywords = ["lipstick", "blush", "concealer", "foundation", "eyeliner", "products"]
+    if any(kw in user_message_lower for kw in product_keywords):
+        products_data = get_products_from_db()
+        return {"products": products_data}
+
+    # 3️⃣ Default: return full knowledge
+    return knowledge_base
+
+# --- Routes ---
+#here in home function extra functionality add by define the route as 
+# decorators(that modify fun by adding in it extra functionality) so here home function automatically 
+#call when someone visit the / route 
+@app.route("/") 
+def home():
+    return render_template("index.html")
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    user_message = request.json.get("message", "").strip()
+
+    # Handle greetings locally
+    # it return true or false then decide what reply
+    if any(greet in user_message.lower().split() for greet in greetings):
+
+        return jsonify({"reply": greetings_reply})
+
+    # Determine relevant knowledge
+    relevant_knowledge = get_relevant_knowledge(user_message)
+
+    # Always include DB products for GPT reference so for any recommendation use website data 
+    if "products" not in relevant_knowledge:
+        relevant_knowledge["products"] = get_products_from_db()
+
+    # GPT instructions prompt
+    #This line creates a GPT model object that your code can use to generate text.
+    model = genai.GenerativeModel("models/gemini-2.5-flash-preview-05-20")
+    prompt = f"""
+You are a polite NARS assistant.
+You have the following JSON knowledge about NARS products, shades, stock, prices, orders, payments, returns, and beauty tips:
+
+{json.dumps(relevant_knowledge, indent=2)}
+
+User asked: "{user_message}"
+Instructions:
+- Only answer questions related to NARS products or services.
+- If the user asks for product suggestions based on skin tone, use the products:
+    - Fair skin: lighter shades
+    - Medium skin: medium shades
+    - Dark skin: darker shades
+- If the user asks for skin type (oily, dry, combination, sensitive), recommend suitable items, but only include products available in the database.
+- If the user asks for low-cost or budget suggestions, select products based on their price from the provided products and respond only with relevant products.
+- If the user asks about trending products, use the JSON trending_products info.
+- Keep answers short, concise, and polite.
+- Use bullet points with "-" for each item.
+- Each bullet point should be on a new line.
+- Include product info (price, shades, stock) only if relevant.
+- If the question is unrelated, politely tell the user you only provide NARS-related info.
+- Answer in 3-5 bullet points max.
+"""
+
+    try:
+        response = model.generate_content(prompt)
+        reply = response.text
+    except Exception:
+        reply = "Sorry, I cannot provide information about that right now."
+
+    return jsonify({"reply": reply})
+
+if __name__ == "__main__":
+    app.run(debug=True)
